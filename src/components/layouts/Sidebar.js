@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Sidebar.css';
 
 
 function Sidebar() {
+
+  const getLinkStyle = ({ isActive }) => ( isActive ? 'navSelected' : null);
   
   return (
         <nav className='nav-menu'>
@@ -11,10 +13,7 @@ function Sidebar() {
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
+                  <NavLink to={item.path} className={getLinkStyle}>{item.icon}<span>{item.title}</span></NavLink>
                 </li>
               );
             })}
