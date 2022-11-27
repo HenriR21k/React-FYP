@@ -1,0 +1,19 @@
+/* Styling */
+
+footer {
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border-top: 1px solid #1058DF;
+    background: #1058DF;
+    margin-top: 50px;
+    
+    
+}
+
+footer a {
+    font-size: 70%;
+    text-decoration: none;
+    color: #000000;
+
+}

@@ -1,0 +1,10 @@
+.CardContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  margin-top: 50px;
+  margin-left: 10px;
+  
+}

@@ -1,0 +1,19 @@
+div.GroupNameCard {
+  background-color: white;
+  border: 3px solid #1058DF;
+  border-radius: 10px;
+  padding: 10px;
+  width: 400px;
+  
+
+}
+
+.GroupNameCard p {
+  font-size: 24px;
+  color: #1058DF;
+}
+
+.TaskCard {
+margin-left: 20px;
+
+}
