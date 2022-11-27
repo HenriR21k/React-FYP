@@ -3,6 +3,7 @@ import Navbar from './Navbar.js';
 import Footer from './Footer.js';
 
 import './Layout.css';
+import Sidebar from './Sidebar.js';
 
 
 function Layout(props) {
@@ -13,13 +14,16 @@ function Layout(props) {
     // View ---------------------------------
 
     return (
-        <div className="centrepane">
-            <Header />
-            <Navbar />
-            <div>
+        <div className="page">
+          
+      
+          <Sidebar/>
+          
+
+          <div className='pageComponents'>
                 {props.children}
-            </div>
-            <Footer/>
+          </div>
+            
         </div>
     )
 
