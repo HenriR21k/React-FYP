@@ -1,25 +1,16 @@
-/* Styling */
 
-div#root {
-    background: White;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black; 
+div.pageComponents {
+    margin-top: 100px;
+    
 }
 
- div.centrepane {
-    background: whitesmoke;
-    width: 100%;
-    max-width: 1000px;
-    min-height: 100vh;
-    height: 100%;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
+div.page {
     position: relative;
-}
-
-div#root div.centrepane > main {
-    padding: 10px;
-    width: 100%;
+    border: 10px solid black; 
+    display: grid;
+    
+    grid-template-columns: 1fr 5fr;
+    
+      
 }
 

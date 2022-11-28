@@ -30,7 +30,7 @@ function Home() {
   // View ----------------------------------------
   return (
     <section>
-      <div className="Home">Home</div>
+      <div className="Home">Your Projects</div>
       {
         !groups
           ? <p>{loadingMessage}</p>
