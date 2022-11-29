@@ -1,4 +1,4 @@
-import './Form.css';
+import './FormComponents.css';
 
 export function Form(props) {
 

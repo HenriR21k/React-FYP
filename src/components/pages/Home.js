@@ -1,29 +1,18 @@
 import { useState, useEffect } from "react";
 import { API } from "../api/apiRequest";
+import useLoad from "../api/useLoad";
 import GroupList from "../UI/GroupList";
 import './Home.css';
 
 function Home() {
   // Initialisation ------------------------------
   const loggedInUserID = 42;
-    
-  // State ---------------------------------------
-  // UseLoad -------------------------------------
-  const [groups, setGroups] = useState(null);
-  const [loadingMessage, setLoadingMessage] = useState('Loading records ...');
+  const endpoint = `groups/users/${loggedInUserID}`
 
-  // Context -------------------------------------
-  // Methods -------------------------------------
-  const loadUsersTeams = async (UserID) => {  
-  const response = await API.get(`groups/users/${UserID}`);
-  response.isSuccess
-    ? setGroups(response.result)
-    : setLoadingMessage(response.message);
-  }
+  //State
 
-  useEffect(() => { loadUsersTeams(loggedInUserID) }, []);
+  const [groups, , loadingMessage] = useLoad(endpoint)
   
-
   // View ----------------------------------------
   return (
     <section>

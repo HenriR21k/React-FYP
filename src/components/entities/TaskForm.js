@@ -1,8 +1,8 @@
-import {Form, FormInput, FormSelect, FormTextArea} from "./Form";
+import {Form, FormInput, FormSelect, FormTextArea} from "./FormComponents.js";
 import Button from "../UI/Button";
 import { useState } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
-import './Form.css'
+import './FormComponents.css'
 import './TaskForm.css'
 
 
