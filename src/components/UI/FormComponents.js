@@ -1,11 +1,12 @@
 import './FormComponents.css';
+import Button from './Button';
 
 export function Form(props) {
 
   return (
     <div className='FormBody'>
       <label htmlFor={props.name}> {props.label} </label> <br/>
-      <form  onSubmit={props.onSubmit}>
+      <form>
       {props.children}
       </form>
     </div>
@@ -23,9 +24,11 @@ export function FormCard(props) {
 
 export function FormFields(props) {
 
+
   return (
     <div className='FormFields'>
       {props.children}
+      
     </div>
   )
 }
