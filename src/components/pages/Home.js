@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { API } from "../api/apiRequest";
-import useLoad from "../api/useLoad";
+import { API } from "../api/apiRequest.js";
+import useLoad from "../api/useLoad.js";
 import GroupList from "../UI/GroupList";
 import './Home.css';
 

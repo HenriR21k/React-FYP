@@ -45,7 +45,7 @@ form {
   justify-content: center;
   /*margin-top: 10%;*/
   padding: 1rem 1rem 0;
-  border: 5px solid red;
+  
 }
 
 .FormBody label {
@@ -65,7 +65,7 @@ form {
   border-radius: 10px;
   box-shadow: 5px 5px 4px #888888;
   padding: .75rem;
-  border: 5px solid blue;
+ 
 }
 
 .FormFields {
