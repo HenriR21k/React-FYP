@@ -10,13 +10,12 @@ function Home() {
   const endpoint = `groups/users/${loggedInUserID}`
 
   //State
-
   const [groups, , loadingMessage] = useLoad(endpoint)
   
   // View ----------------------------------------
   return (
     <section>
-      <div className="Home">Your Projects</div>
+      <div className="Home">Your Teams</div>
       {
         !groups
           ? <p>{loadingMessage}</p>
