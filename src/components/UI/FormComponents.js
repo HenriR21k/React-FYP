@@ -1,11 +1,44 @@
-import './Form.css';
+import './FormComponents.css';
+import Button from './Button';
 
 export function Form(props) {
 
   return (
-    <form onSubmit={props.onSubmit}>
+    <div className='FormBody'>
+      <label htmlFor={props.name}> {props.label} </label> <br/>
+      <form>
       {props.children}
-    </form>
+      </form>
+    </div>
+  )
+}
+
+export function FormCard(props) {
+
+  return (
+    <div className='FormCard'>
+      {props.children}
+    </div>
+  )
+}
+
+export function FormFields(props) {
+
+
+  return (
+    <div className='FormFields'>
+      {props.children}
+      
+    </div>
+  )
+}
+
+export function Field(props) {
+
+  return (
+    <div className='Field'>
+      {props.children}
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 input {
- 
   height: 50px;
   width: 100%;
   background-color: transparent;
@@ -11,24 +10,18 @@ input {
   border-right: none;
   border-bottom: solid #292424 1px;
   padding: 3px 10px;
-  
 }
 
 textarea {
   height: 100px;
-  width: 100%;
-  
-  
+  width: 100%; 
 }
 
 label {
-  
 	font-family: "DM Sans", sans-serif;
   font-size: 24px;
   line-height: 1.5;
 	color: #6658d3;
-  
-  
 }
 
 /*References the contents inside the input field*/
@@ -46,5 +39,41 @@ textarea[name] {
   padding: 10px;
 }
 
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*margin-top: 10%;*/
+  padding: 1rem 1rem 0;
+  border: 5px solid red;
+}
 
+.FormBody label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  line-height: 1.5;
+	color: #6658d3;
+}
+
+.FormCard {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  background-color: #FFF;
+  border-radius: 10px;
+  box-shadow: 5px 5px 4px #888888;
+  padding: .75rem;
+  border: 5px solid blue;
+}
+
+.FormFields {
+  background-color: white;
+}
+
+.Field {
+  width: 400px;
+  padding-bottom: 10px;
+}
 

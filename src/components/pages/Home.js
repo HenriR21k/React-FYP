@@ -1,36 +1,21 @@
 import { useState, useEffect } from "react";
+import { API } from "../api/apiRequest";
+import useLoad from "../api/useLoad";
 import GroupList from "../UI/GroupList";
 import './Home.css';
 
 function Home() {
   // Initialisation ------------------------------
   const loggedInUserID = 42;
-  const endpoint = `/groups/users/${loggedInUserID}`
-  
-  
-  // State ---------------------------------------
-  const [groups, setGroups] = useState(null);
-  const [loadingMessage, setLoadingMessage] = useState('Loading records ...');
+  const endpoint = `groups/users/${loggedInUserID}`
 
-  // Context -------------------------------------
-  // Methods -------------------------------------
-  const apiCall = async (endpoint) => {
-  const URL = 'http://localhost:5000/api';
-  const endpointAddress = URL + endpoint;
-  const response = await fetch(endpointAddress)
+  //State
+  const [groups, , loadingMessage] = useLoad(endpoint)
   
-  const result = await response.json();
-  
-  setGroups(result);
-  }
-
-  useEffect(() => { apiCall(endpoint) }, []);
-  //apiCall(endpoint);
-
   // View ----------------------------------------
   return (
     <section>
-      <div className="Home">Your Projects</div>
+      <div className="Home">Your Teams</div>
       {
         !groups
           ? <p>{loadingMessage}</p>
