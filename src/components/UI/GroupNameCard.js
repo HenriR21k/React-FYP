@@ -1,10 +1,8 @@
 import './GroupNameCard.css';
 import './TaskCard.js';
-import { useState, useEffect } from "react";
 import useLoad from '../api/useLoad.js';
-import API from '../api/apiRequest.js';
-import { Navigate, useNavigate } from 'react-router-dom';
-import AddTasksPage from '../pages/AddTasksPage';
+import { useNavigate } from 'react-router-dom';
+
 
 function GroupNameCard({group, userID}) {
   //Initialisation -------------------
@@ -23,11 +21,17 @@ function GroupNameCard({group, userID}) {
       
     })
   };
+
+  const navigateToProjectPage = function () {
+    navigate("../GroupPage/ProjectPage", {
+      state: group.GroupID
+    })
+  };
   
   return (
 
     <div className="GroupNameCard">
-      <p onClick={valuePassing}>Group {group.GroupID}: {group.GroupName}</p>
+      <p onClick={navigateToProjectPage}>Group {group.GroupID}: {group.GroupName}</p>
       <div className='TaskCard'>
         {
           !tasks

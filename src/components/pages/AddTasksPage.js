@@ -16,6 +16,8 @@ const AddTasksPage = (props) => {
     const outcome = await API.post('tasks', newTask);
     //fetchGroupTasks(); will be passed in as a handler throug props to redisplay groupTasks.
   }
+
+
   // View ----------------------------------
 
   return (
@@ -23,7 +25,7 @@ const AddTasksPage = (props) => {
       <TaskForm
       groupID = {accessedGroupID}
       onPost = {handleGroupTaskPost}
-      /> {/**Pass in the groupID as a parameter */}
+      /> 
       
 
       </>

@@ -1,6 +1,9 @@
 import './FormComponents.css';
-import Button from './Button';
 
+
+
+//Try to merge form, formcard, and fields
+//FormCard -> Form -> FormFields
 export function Form(props) {
 
   return (

@@ -5,6 +5,7 @@ import Home from './components/pages/Home.js';
 import SignIn from './components/pages/SignIn.js';
 import PageNotFound from './components/pages/404.js';
 import AddTasksPage from './components/pages/AddTasksPage.js';
+import ProjectPage from './components/pages/ProjectPage.js'
 
 import './App.css';
 
@@ -17,7 +18,8 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
           <Route path='/' element={<Home />} />
           <Route path='/signin'  element={<SignIn />} />
-         { <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} /> }
+          <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} /> 
+          <Route path='/GroupPage/ProjectPage' element={<ProjectPage />} /> 
         </Routes>
       </Layout>
     </BrowserRouter>
