@@ -38,12 +38,19 @@ const ProjectPage = (props) => {
   const handleGroupTaskPut = async (newTask) => {
     const outcome = await API.put('tasks/'+newTask.TaskID, newTask)
     
-
   }
 
-  //Define method to open modal here?
+  /*const fetchModules = async () => {
+    const outcome = await API.get('Modules');
+    if (outcome.success) setModules (outcome.response);
+    else setLoadingMessage(`Error ${outcome.response.status}: Modules could not be found.`);
+  }*/
 
-  
+  const cancelTaskForm = () => {
+    setShowTaskForm(false);
+    setSingleTask(dummyObject);
+    
+  }
 
   const handleSubmit = () => {
     setShowTaskForm(true);
@@ -75,7 +82,7 @@ const ProjectPage = (props) => {
         />
 
         <Button
-          title = "submit"
+          title = "Add Task"
           onClick = {handleSubmit}
           //call method to open modal
         />
@@ -87,6 +94,7 @@ const ProjectPage = (props) => {
               <TaskForm
                 onPost = {handleGroupTaskPost}
                 onPut = {handleGroupTaskPut}
+                onCancel = {cancelTaskForm}
                 task = {singleTask}
                 groupID = {accessedGroupID}
               />

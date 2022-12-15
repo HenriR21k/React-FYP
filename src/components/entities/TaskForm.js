@@ -71,7 +71,8 @@ export default function TaskForm(props) {
   return (
     <>
     <FormCard>
-            <Form label = "Add Task Form: ">
+      <Button title="X" onClick={props.onCancel} />
+            <Form label = "Task Form: ">
                 <FormFields>
                     <Field>
                       <FormInput name = "TaskTitle" placeholder = "Enter task title" label = "Task Title" defaultValue = {handleDefaultValue("TaskTitle")} onChange={handleChange}/>
