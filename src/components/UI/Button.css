@@ -12,7 +12,6 @@
     color: #FFF;
     border: 0;
     cursor: pointer;
-   
 }
 
 .submitBtn:hover {
@@ -20,3 +19,39 @@
   color: #FFF;
   cursor: pointer;
 }
+
+.editBtn {
+  border: none;
+  background: none;
+  Cursor: pointer;
+}
+
+.editBtn img{
+  width: 25px;
+  height: 25px;
+}
+
+.addTask {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  background: none;
+  Cursor: pointer;
+  border: none;
+  align-items: center;
+  font-size: 20px;
+  color: gray
+}
+
+.addTask img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+}
+
+.addTask:hover,
+.addTask:active {
+  background-color: #FFF;
+  color: black;
+}
+

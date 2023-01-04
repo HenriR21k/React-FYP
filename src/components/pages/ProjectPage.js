@@ -77,11 +77,14 @@ const ProjectPage = (props) => {
           objects={tasks}
           idKey="TaskID"
           fieldOrder={['TaskTitle','TaskDescription','TaskStatus','TaskSetDate','TaskDeadline']}
-          headers={["Task Title", "Task Description", "Task Status", 'TaskSetDate', 'TaskDeadline']}
+          headers={["Task Title", "Task Description", "Task Status", 'Task Set Date', 'Task Deadline']}
           handlers={{setEdit}}
         />
 
         <Button
+          className="addTask"
+          img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
+          
           title = "Add Task"
           onClick = {handleSubmit}
           //call method to open modal

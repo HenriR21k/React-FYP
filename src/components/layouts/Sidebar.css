@@ -2,8 +2,9 @@
 .nav-menu {
   background-color: #060b26;
   width: 300px;
-  height: 100vh;
-
+  position: fixed;
+  top: 0;
+  bottom: 0;
 }
 
 .nav-menu-items {
@@ -57,9 +58,10 @@
 }
 
 .navLogo {
-  margin-top: 55px;
+  margin-top: 75px;
   margin-left: 10px;
-  position: fixed;
+  margin-bottom: -70px;
+  position: relative;
   width: 250px;
   height: 60px;
 }
