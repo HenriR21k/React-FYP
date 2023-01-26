@@ -84,7 +84,6 @@ const ProjectPage = (props) => {
         <Button
           className="addTask"
           img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
-          
           title = "Add Task"
           onClick = {handleSubmit}
           //call method to open modal

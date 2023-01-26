@@ -1,3 +1,4 @@
+
 table {
   margin-top: 5%;
   border-collapse: collapse;
@@ -18,7 +19,7 @@ table tbody tr td {
   padding-top: 30px;
   padding-right: 100px;
   cursor: pointer;
-  /* border: 1px solid blue; */
+  
 }
 
 table tbody tr td:hover,
@@ -28,13 +29,13 @@ table tbody tr td:active {
   padding-right: 100px;
   cursor: pointer;
   text-decoration: underline;
-  /* border: 1px solid blue; */
+  
 }
 
 thead {
   font-size: 20px;
   text-align: left;
-  /*border: 2px solid red;*/
+  
 }
 
 .Button {

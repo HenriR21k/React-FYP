@@ -8,8 +8,11 @@ export default function TaskForm(props) {
   //Initialisation
   const navigate = useNavigate();
   //State
+
   const [task, setTask] = useState(null);
   const [showTaskStatusField, setShowTaskStatusField] = useState(false);
+  const endpoint = `groups/${accessedGroupID}/tasks`
+  const [tasks, , loadingMessage] = useLoad(endpoint);
   //Methods
 
   const handleDefaultValue = (taskObjectValue) => {

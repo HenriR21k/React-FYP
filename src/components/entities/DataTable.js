@@ -25,20 +25,21 @@ function DataTable({objects, idKey, fieldOrder, headers, handlers}) {
     ));
 
   const ListOfCells = (rowObj) => fieldOrder.map((key, index) => {
+
+    let value = rowObj[key];
   
     if (key === "TaskSetDate") {
       const c = { time: rowObj[key] };
-      rowObj[key] = new Date(c.time).toLocaleDateString();
+      value = new Date(c.time).toLocaleDateString();
     }
-    else if (key === "TaskDeadline") {
+    if (key === "TaskDeadline") {
       const c = { time: rowObj[key] };
-      rowObj[key] = new Date(c.time).toLocaleDateString();
+      value = new Date(c.time).toLocaleDateString();
     } 
-   
+    
     return (
-    <td key={index}> { rowObj[key] } </td>
-    )}
-    );
+    <td key={index}> { value } </td>
+    )});
 
   
 
