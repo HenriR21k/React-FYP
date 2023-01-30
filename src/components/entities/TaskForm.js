@@ -2,6 +2,7 @@ import {Form, FormInput, FormSelect, FormTextArea, FormCard, FormFields, Field} 
 import Button from "../UI/Button";
 import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
+import useLoad from "../api/useLoad.js";
 
 export default function TaskForm(props) {
 
@@ -11,8 +12,8 @@ export default function TaskForm(props) {
 
   const [task, setTask] = useState(null);
   const [showTaskStatusField, setShowTaskStatusField] = useState(false);
-  const endpoint = `groups/${accessedGroupID}/tasks`
-  const [tasks, , loadingMessage] = useLoad(endpoint);
+  //const endpoint = `groups/${accessedGroupID}/tasks`
+  //const [tasks, , loadingMessage] = useLoad(endpoint);
   //Methods
 
   const handleDefaultValue = (taskObjectValue) => {

@@ -2,29 +2,33 @@ import { Button } from "../UI/Button.js";
 import "../UI/Table.css";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import useLoad from '../api/useLoad.js';
+import { useNavigate } from 'react-router-dom';
 
 function DataTable({objects, idKey, fieldOrder, headers, handlers}) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Methods -------------------------------------
 
-  /*function checkSetDateorDeadline(rowObj, key) {
-    if (key = "TaskSetDate") {
-      const c = { time: rowObj[key] };
-      return new Date(c.time).toLocaleDateString();
-    }
+  // const navigateToTaskInfoPage = function () {
+  //   navigate("../GroupPage/TaskPage", {
+  //     state: group.GroupID
+  //   })
+  // };
 
-    if (key = "TaskDeadline") {
-      const c = { time: rowObj[key] };
-      return new Date(c.time).toLocaleDateString();
-    }
-  }*/
+  const navigate = useNavigate();
 
   const ListOfHeaders = () => headers.map((value, index) => (
       <th key={index}>{value}</th>
     ));
 
   const ListOfCells = (rowObj) => fieldOrder.map((key, index) => {
+
+    const navigateToTaskPage = function () {
+      navigate("../GroupPage/ProjectPage/TaskPage", {
+        state: rowObj[idKey]
+      })
+    };
 
     let value = rowObj[key];
   
@@ -38,7 +42,7 @@ function DataTable({objects, idKey, fieldOrder, headers, handlers}) {
     } 
     
     return (
-    <td key={index}> { value } </td>
+    <td key={index} onClick={navigateToTaskPage}> { value } </td>
     )});
 
   

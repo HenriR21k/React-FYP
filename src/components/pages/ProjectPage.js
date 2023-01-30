@@ -76,8 +76,8 @@ const ProjectPage = (props) => {
         <DataTable
           objects={tasks}
           idKey="TaskID"
-          fieldOrder={['TaskTitle','TaskDescription','TaskStatus','TaskSetDate','TaskDeadline']}
-          headers={["Task Title", "Task Description", "Task Status", 'Task Set Date', 'Task Deadline']}
+          fieldOrder={['TaskTitle','TaskStatus','TaskSetDate','TaskDeadline']}
+          headers={["Task Title", "Task Status", 'Task Set Date', 'Task Deadline']}
           handlers={{setEdit}}
         />
 
