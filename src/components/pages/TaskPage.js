@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { API } from "../api/apiRequest.js";
 import useLoad from "../api/useLoad.js";
 import { useLocation } from "react-router-dom";
+import AssignedUsersList from "../UI/AssignedUsersList";
+import PostList from "../UI/PostList.js";
 import './TaskPage.css';
 
 
@@ -40,7 +42,6 @@ function TaskPage() {
     <>
     <div className="border">
       <div className="grid-container">
-
         <div className="TaskDesc">
         {
         !task
@@ -55,13 +56,33 @@ function TaskPage() {
         </div>
         {/**Plug this through a group container class */}
         <div className="AssignedItem">
-        Assigned Users to Task:
+        <p>Assigned Users to Task:</p>
+          {
+          !users
+            ? <p>{loadingMessage}</p>
+            : users.length === 0
+              ? <p>No users assigned to this task.</p>
+              : <AssignedUsersList
+                users={users}
+                
+              />
+          }
 
         </div>
 
         {/**Plug this through a group container class. */}
         <div className="PostsItem">
-          posts
+          <h1>Feedback</h1>
+          {
+          !posts
+            ? <p>{loadingMessage}</p>
+            : posts.length === 0
+              ? <p>You do not have any posts.</p>
+              : <PostList
+                posts={posts}
+                
+              />
+          }
         </div>
 
 
