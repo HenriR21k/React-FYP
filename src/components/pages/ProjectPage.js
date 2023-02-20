@@ -79,6 +79,7 @@ const ProjectPage = (props) => {
           fieldOrder={['TaskTitle','TaskStatus','TaskSetDate','TaskDeadline']}
           headers={["Task Title", "Task Status", 'Task Set Date', 'Task Deadline']}
           handlers={{setEdit}}
+          variant="TasksPage"
         />
 
         <Button

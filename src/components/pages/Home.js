@@ -3,6 +3,8 @@ import { API } from "../api/apiRequest.js";
 import useLoad from "../api/useLoad.js";
 import GroupList from "../UI/GroupList";
 import './Home.css';
+import TeamTable from "../entities/TeamTable";
+import Table from "../entities/Table.js";
 
 function Home() {
   // Initialisation ------------------------------
@@ -16,7 +18,8 @@ function Home() {
   return (
     <section>
       <div className="Home">Your Teams</div>
-      {
+
+      {/*
         !groups
           ? <p>{loadingMessage}</p>
           : groups.length === 0
@@ -24,8 +27,18 @@ function Home() {
             : <GroupList
               groups={groups}
               userID={loggedInUserID}
+            />     
+  */}
+      {
+        
+            <Table
+              objects={groups}
+              idKey='GroupID'
+              fieldOrder={['GroupName']}
+              headers={["Teams"]}
+              variant="homepage"
             />
-      }
+    }
     </section>
   )
 }
