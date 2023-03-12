@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  margin-top: 100px;
+  width: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.accordion {
+  width: 900px;
+}
+
+.item {
+  background-color: rgb(119, 213, 218);
+  margin-bottom: 15px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+}
+
+.title {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+
+
+.content {
+  color: green;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.content.show {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1,0,1,0);
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 14px;
+}

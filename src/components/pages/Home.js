@@ -5,48 +5,43 @@ import GroupList from "../UI/GroupList";
 import './Home.css';
 import TeamTable from "../entities/TeamTable";
 import Table from "../entities/Table.js";
+import Accordian from "../entities/Accordian.js";
+import StudentHome from "./StudentHome.js";
+import LecturerHome from "./LecturerHome.js";
 
 function Home() {
   // Initialisation ------------------------------
-  const loggedInUserID = 42;
-  const endpoint = `groups/users/${loggedInUserID}`
+  const loggedInUserID = 51; //OR 51 for lecturer, 42 is a Student
+  const endpoint = `users/${loggedInUserID}/usertype`
+  const [usertype, , loadingMessage2] = useLoad(endpoint)
 
-  //State
-  const [groups, , loadingMessage] = useLoad(endpoint)
-  
+  let variant = ""
+  {!usertype
+    ? variant = "Empty"
+    : variant = usertype[0].UserTypeName
+  }
+
+  console.log(variant)
+
   // View ----------------------------------------
-  return (
-    <section>
-      <div className="Home">Your Teams</div>
 
-      {/*
-        !groups
-          ? <p>{loadingMessage}</p>
-          : groups.length === 0
-            ? <p>You are not in any groups.</p>
-            : <GroupList
-              groups={groups}
-              userID={loggedInUserID}
-            />     
-  */}
-      {
-        
-            <Table
-              objects={groups}
-              idKey='GroupID'
-              fieldOrder={['GroupName']}
-              headers={["Teams"]}
-              variant="homepage"
-            />
+    switch (variant) {
+     case 'Student':
+      return (
+
+        <StudentHome
+        userID = {loggedInUserID}
+        />
+      )
+     case 'Lecturer':
+       return (
+        <LecturerHome/>
+       )
+  
     }
-    </section>
-  )
+
+  
 }
 
-/*
-groups.map((group) => 
-                <p>{group.GroupName}</p>
-              )
-*/
 
 export default Home;

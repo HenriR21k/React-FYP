@@ -76,8 +76,6 @@ function DataTable({objects, idKey, fieldOrder, headers, handlers, variant}) {
                         }
                       </tr>
                     )
-                  
-                
               })
             }
           </tbody> 

@@ -15,7 +15,6 @@ function Layout(props) {
           <div className='pageComponents'>
                 {props.children}
           </div>
-            
         </div>
     )
 

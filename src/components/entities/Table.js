@@ -5,6 +5,7 @@ import * as IoIcons from "react-icons/io";
 import useLoad from '../api/useLoad.js';
 import { useNavigate } from 'react-router-dom';
 
+
 function Table({objects, idKey, fieldOrder, headers, handlers, variant}) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------

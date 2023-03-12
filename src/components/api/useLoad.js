@@ -15,7 +15,8 @@ export default function useLoad(endpoint) {
   const response = await API.get(endpoint);
   response.isSuccess
     ? setRecords(response.result)
-    : setLoadingMessage(response.message);
+    : setLoadingMessage(response.message) 
+      
   }
 
   useEffect(() => { loadRecords(endpoint) }, []);
