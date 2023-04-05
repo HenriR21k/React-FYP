@@ -11,6 +11,7 @@ function StudentHome(props) {
   // Properties ----------------------------
   const endpoint2 = `groups/users/${props.userID}`
   console.log(props.userID)
+  const userID = props.userID
   // Hooks ---------------------------------
   const [groups, , loadingMessage] = useLoad(endpoint2)
   // Methods -------------------------------
@@ -26,6 +27,7 @@ function StudentHome(props) {
             fieldOrder={['GroupName']}
             headers={["Teams"]}
             variant="homepage"
+            user={userID}
           />
       }
   

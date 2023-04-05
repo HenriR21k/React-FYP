@@ -79,7 +79,7 @@ export function FormTextArea(props) {
   <>
     <label htmlFor={props.name}> {props.label} </label> <br/>
     <textarea type={props.type} id={props.name} name={props.name} defaultValue={props.defaultValue} 
-    onChange={props.onChange} placeholder={props.placeholder}/> <br />
+    onChange={props.onChange} placeholder={props.placeholder} value={props.value}/> <br />
     {
       props.error &&
         <p>Error message: {props.error}</p>

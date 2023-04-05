@@ -5,7 +5,7 @@ import * as IoIcons from "react-icons/io";
 import useLoad from '../api/useLoad.js';
 import { useNavigate } from 'react-router-dom';
 
-function DataTable({objects, idKey, fieldOrder, headers, handlers, variant}) {
+function DataTable({objects, idKey, fieldOrder, headers, handlers, variant, user, group}) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Methods -------------------------------------
@@ -22,7 +22,7 @@ function DataTable({objects, idKey, fieldOrder, headers, handlers, variant}) {
 
       const navigateToTaskPage = function () {
         navigate("../GroupPage/ProjectPage/TaskPage", {
-          state: rowObj[idKey]
+          state: {id: rowObj[idKey], user: user, group: group}
         })
       };
   

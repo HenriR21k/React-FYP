@@ -11,7 +11,7 @@ import LecturerHome from "./LecturerHome.js";
 
 function Home() {
   // Initialisation ------------------------------
-  const loggedInUserID = 51; //OR 51 for lecturer, 42 is a Student
+  const loggedInUserID = 42; //OR 51 for lecturer, 42 is a Student
   const endpoint = `users/${loggedInUserID}/usertype`
   const [usertype, , loadingMessage2] = useLoad(endpoint)
 

@@ -21,9 +21,6 @@ export function PostsCard(props) {
       <>
         <div className="PostsCard">
           
-          <div className="PostTitle">
-            <p>{props.post.PostTitle}</p>
-          </div>
           <div className='PostDate'>
             <p> Posted at: {date} </p>
           </div>

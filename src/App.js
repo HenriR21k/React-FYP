@@ -6,7 +6,9 @@ import PageNotFound from './components/pages/404.js';
 import AddTasksPage from './components/pages/AddTasksPage.js';
 import ProjectPage from './components/pages/ProjectPage.js';
 import TaskPage from './components/pages/TaskPage.js';
+import ModulesProjects from './components/pages/ModulesProjectsPage.js';
 import './App.css';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Routes>
           <Route path='*' element={<PageNotFound />} />
           <Route path='/' element={<Home />} />
+          <Route path='/Modules/Projects' element={<ModulesProjects />} />
           <Route path='/signin'  element={<SignIn />} />
           <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} /> 
           <Route path='/GroupPage/ProjectPage' element={<ProjectPage />} /> 

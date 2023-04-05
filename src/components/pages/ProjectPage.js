@@ -14,7 +14,10 @@ import Button from "../UI/Button";
 const ProjectPage = (props) => {
   // Properties ----------------------------
   const { state } = useLocation(); // 
-  const accessedGroupID = state;
+  const accessedGroupID = state.id;
+  console.log(accessedGroupID)
+  const user = state.user
+  console.log(user)
   const endpoint = `groups/${accessedGroupID}/tasks`
   const [tasks, , loadingMessage] = useLoad(endpoint);
   
@@ -80,6 +83,8 @@ const ProjectPage = (props) => {
           headers={["Task Title", "Task Status", 'Task Set Date', 'Task Deadline']}
           handlers={{setEdit}}
           variant="TasksPage"
+          user={user}
+          group={accessedGroupID}
         />
 
         <Button

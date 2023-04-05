@@ -55,3 +55,29 @@
   color: black;
 }
 
+.addPost {
+  align-items: flex-start;
+  background: none;
+  Cursor: pointer;
+  border: none;
+  font-size: 20px;
+  color: gray
+}
+
+.addPost img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+}
+
+.addPost:hover,
+.addPost:active {
+  background-color: #FFF;
+  color: black;
+}
+
+.addModule {
+  margin-left: 120px;
+}
+

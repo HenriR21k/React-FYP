@@ -6,7 +6,7 @@ import useLoad from '../api/useLoad.js';
 import { useNavigate } from 'react-router-dom';
 
 
-function Table({objects, idKey, fieldOrder, headers, handlers, variant}) {
+function Table({objects, idKey, fieldOrder, headers, handlers, variant, user}) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Methods -------------------------------------
@@ -26,8 +26,9 @@ function Table({objects, idKey, fieldOrder, headers, handlers, variant}) {
       };
 
       const navigateToProjectPage = function () {
+        console.log("This page:"+user);
         navigate("../GroupPage/ProjectPage", {
-          state: rowObj[idKey]
+          state: {id: rowObj[idKey], user: user}
         })
       };
 
