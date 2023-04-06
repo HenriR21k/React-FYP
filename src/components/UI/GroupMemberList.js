@@ -14,9 +14,23 @@ function GroupMemberList(props) {
             <h1>Group Members</h1>
             <button onClick={props.onCancel}>Close</button>
             
-            {props.groupUsers.map(user => (
-            <GroupUser key={user.id} user={user} taskID = {props.taskID} loadUsers = {props.loadUsers} />
-            ))}
+            {
+              props.groupUsers.map(user => (
+                <GroupUser 
+                  key={user.UserID} 
+                  user={user} 
+                  taskID = {props.taskID} 
+                  loadUsers = {props.loadUsers} 
+                  isAssigned={ 
+                    props.users 
+                      ? props.users.find(assignedUser => assignedUser.UserID === user.UserID) 
+                      : false 
+                    } 
+                  AssignedUsersList={props.users} 
+                  setUser={props.setUser} 
+                />
+              ))
+            }
 
         </div>
         }

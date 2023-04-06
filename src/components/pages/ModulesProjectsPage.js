@@ -10,6 +10,8 @@ import ProjectForm from "../entities/ProjectForm";
 
 function ModulesProjects() {
   // Properties ----------------------------
+  const navigate = useNavigate();
+
   const { state } = useLocation(); // 
   const accessedModuleID = state.id;
 
@@ -61,6 +63,9 @@ function ModulesProjects() {
   const navigateToProject = (item) => {
     const item1 = item
     console.log(item1.projectID);
+    navigate("../Modules/Projects/Groups", {
+      state: {id: item1.projectID, ModuleID: accessedModuleID}
+    })
   }
 
   // View ---------------------------------

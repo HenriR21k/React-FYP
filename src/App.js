@@ -8,6 +8,7 @@ import ProjectPage from './components/pages/ProjectPage.js';
 import TaskPage from './components/pages/TaskPage.js';
 import ModulesProjects from './components/pages/ModulesProjectsPage.js';
 import './App.css';
+import ModulesProjectsGroups from './components/pages/ModulesProjectsGroups.js';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
           <Route path='/' element={<Home />} />
           <Route path='/Modules/Projects' element={<ModulesProjects />} />
+          <Route path='/Modules/Projects/Groups' element={<ModulesProjectsGroups />} />
           <Route path='/signin'  element={<SignIn />} />
           <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} /> 
           <Route path='/GroupPage/ProjectPage' element={<ProjectPage />} /> 

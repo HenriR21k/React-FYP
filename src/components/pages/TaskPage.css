@@ -2,11 +2,13 @@
 .TaskDesc { grid-area: main; }
 .AssignedItem { grid-area: right; }
 .PostsItem { grid-area: footer; }
+.Graeme {grid-area: graeme;}
 
 .grid-container {
   display: grid;
   grid-template-areas:
     'main main main right right'
+    'graeme graeme graeme graeme graeme'
     'footer footer footer footer footer';
   gap: 10px;
   /* border: 5px solid blue; */
