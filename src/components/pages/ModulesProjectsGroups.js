@@ -5,6 +5,7 @@ import useLoad from "../api/useLoad";
 import { useState, useEffect } from "react";
 import Accordian from "../entities/Accordian";
 import Button from "../UI/Button";
+import GroupForm from "../entities/GroupForm";
 import ProjectForm from "../entities/ProjectForm";
 import ModuleMemberList from "../UI/ModuleMemberList";
 import { useRef } from "react";
@@ -20,48 +21,36 @@ function ModulesProjectsGroups() {
 
   const endpoint2 = `module/${accessedModuleID}/users`
   const [moduleMembers, setModuleMembers, loadingMessage2, loadModuleMembers] = useLoad(endpoint2)
-  
-  const [currentGroupID, setCurrentGroupID] = useState();
-  const [showModal, setShowModal] = useState(false);
 
-  const [groupmembers, setGroupmembers] = useState();
+  const [singleGroup, setSingleGroup] = useState(null);
+  const [showGroupForm, setShowGroupForm] = useState(false);
 
+  useEffect(() => {loadGroups(endpoint)}, []);
 
-
-
-  const handleModalClose = () => {
-  setShowModal(false);
+  let dummyObject = {
+    GroupID: null,
   }
 
-  const handleButtonClick = () => {
-      setShowModal(true);
-  }
+  useEffect(() => {setSingleGroup(dummyObject)}, []);
 
-  // const currentGroup = (groupID) => {
-  //   //When it is called, pass in the groupID
-  //   setCurrentGroupID(groupID);
-  //   console.log(currentGroupID);
-  // }
-
-  // const handleAssignUsers = (loadUsersInGroup, endpoint) => {
-  //   console.log("top layer"+loadUsersInGroup)
-  //   console.log(endpoint)
-  //   loadUsersInGroup(endpoint)
-  // };
-
-  // const getCurrentGroupmembers = (currentMembers) => {
-  //   setGroupmembers(currentMembers)
-  // }
-
-  //ProjectID / ModuleID - pass values into accordian. Pass projectID into accordian, renders list of groups by title.
-  //Then inside, create a list of mapped out student containers, so those assigned to the group. 
-  //-----------------------------------------------------------------------------------------------------
-  //Then add a button outside
-  //the list. Modal opens up a list of students in the module. Execute function during the listing. Then use same code as previous example.
-  // Hooks ---------------------------------
-  // Context -------------------------------
   // Methods -------------------------------
-  // View ---------------------------------
+
+  const handleGroupPost = async (newTask) => {
+    const outcome = await API.post('Groups', newTask);
+  }
+
+
+  const cancelGroupForm = () => {
+    setShowGroupForm(false);
+    loadGroups(endpoint)
+    setSingleGroup(dummyObject);
+    
+  }
+
+  const handleSubmit = () => {
+    setShowGroupForm(true);
+  }
+  
 
   return (
       <>
@@ -70,25 +59,25 @@ function ModulesProjectsGroups() {
         loadGroups={loadGroups}
         ModuleID={accessedModuleID}
         ModuleMembers={moduleMembers}
-        closeModal={handleModalClose}
-        openModal={handleButtonClick}
-        showModal={showModal}
-        // fetchCurrentGroup={currentGroup}
-        // onAssignUsers={handleAssignUsers}
-        // getCurrentGroupmembers={getCurrentGroupmembers}
         />
 
-        {/* {
-          showModal &&
-          <ModuleMemberList
-            onCancel = {handleModalClose}
-            ModuleID = {accessedModuleID}
-            UsersInModule = {moduleMembers}
-            handleAssignUsers = {handleAssignUsers} //load assigned users in group
-            GroupID = {currentGroupID}
-            UsersAssignedToGroup = {groupmembers}
-          />
-        } */}
+        <Button
+          className="addTask"
+          img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
+          title = "Create Group"
+          onClick = {handleSubmit}
+        />
+     
+        {
+              showGroupForm &&
+              <GroupForm
+                onPost = {handleGroupPost}
+                onCancel = {cancelGroupForm}
+                group = {singleGroup}
+                projectID = {accessedProjectID}
+                loadGroups = {loadGroups}
+              />
+        }
 
       </>
   )

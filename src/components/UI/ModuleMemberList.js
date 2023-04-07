@@ -12,10 +12,7 @@ function ModuleMemberList(props) {
         ? <p>No users</p>
         : <div className="modal-content">
             <h1>Module Members</h1>
-            
-            
-            <button onClick={props.onCancel}>Close</button>
-            
+            <button onClick={props.onCancel}>Close</button>   
             {
               props.UsersInModule.map(user => (
                 <ModuleUser

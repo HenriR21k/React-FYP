@@ -55,6 +55,30 @@
   color: black;
 }
 
+.assign {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background: none;
+  Cursor: pointer;
+  border: none;
+  align-items: center;
+  font-size: 20px;
+  color: gray
+}
+
+.assign img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+}
+
+.assign:hover,
+.assign:active {
+  background-color: #FFF;
+  color: black;
+}
+
 .addPost {
   align-items: flex-start;
   background: none;

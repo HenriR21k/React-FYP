@@ -3,7 +3,7 @@ import CardContainer from './CardContainer';
 import AssignedToGroup from './AssignedToGroup';
 import useLoad from '../api/useLoad';
 import Button from './Button';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ModuleMemberList from './ModuleMemberList';
 
 export function AltATUList(props) {
@@ -11,25 +11,28 @@ export function AltATUList(props) {
     const endpoint = `groups/${props.currentGroupID}/users`
     const [UsersInGroup, setUsersInGroup, loadingMessage, loadUsersInGroup] = useLoad(endpoint)
 
-   
+    const [showModal, setShowModal] = useState(false);
 
+    const handleModalClose = () => {
+      setShowModal(false);
+      }
+     
     const handleOpenModal = () => {
        
-        props.openModal()
+        setShowModal(true)
 
       };
 
  
 
-      useEffect(() => { loadUsersInGroup(endpoint) }, []);
+    useEffect(() => { loadUsersInGroup(endpoint) }, []);
    
     return (
         <>
-        
-        <CardContainer className={classes.list}>
+          <CardContainer className={classes.list}>
             {
                 !UsersInGroup
-                ? <p>No users in group</p>
+                ? <p>No users in group {}</p>
                 : UsersInGroup.map(UserInGroup => {
                     return(
                     <AssignedToGroup 
@@ -38,28 +41,28 @@ export function AltATUList(props) {
                     />
                     )
                 })
+                
             }
-        <Button
-            className="addTask"
-            img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
-            title = "Assign Users"
-            onClick={() => handleOpenModal()}
-            
-        />
-        </CardContainer>
-        {
-        !UsersInGroup
-        ? <p>No users</p>
-        : props.showModal &&
-          <ModuleMemberList
-            onCancel = {props.closeModal}
-            ModuleID = {props.ModuleID}
-            UsersInModule = {props.ModuleMembers}
-            loadUsersInGroup = {loadUsersInGroup}
-            GroupID = {props.currentGroupID}
-            UsersAssignedToGroup = {UsersInGroup}
-          />
-        }
+            {
+                showModal && <ModuleMemberList
+                  onCancel = {handleModalClose}
+                  ModuleID = {props.ModuleID}
+                  UsersInModule = {props.ModuleMembers}
+                  loadUsersInGroup = {loadUsersInGroup}
+                  GroupID = {props.currentGroupID}
+                  UsersAssignedToGroup = {UsersInGroup}
+                />
+            }
+            <Button
+              className="assign"
+              img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
+              title = "Assign Users"
+              onClick={() => handleOpenModal()}
+            />
+          </CardContainer>
+       
+          
+        
 
         </>
        
