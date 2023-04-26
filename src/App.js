@@ -9,24 +9,39 @@ import TaskPage from './components/pages/TaskPage.js';
 import ModulesProjects from './components/pages/ModulesProjectsPage.js';
 import './App.css';
 import ModulesProjectsGroups from './components/pages/ModulesProjectsGroups.js';
+import LoginPage from './components/pages/LoginPage.js';
+import AssignUserToModulePage from './components/pages/AssignUserToModulePage.js';
+import { AuthProvider } from './components/auth/useAuth.js';
+import ProtectedRoute from './components/auth/ProtectedRoute.js';
 
 
 function App() {
+
+  
+
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path='*' element={<PageNotFound />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/Modules/Projects' element={<ModulesProjects />} />
-          <Route path='/Modules/Projects/Groups' element={<ModulesProjectsGroups />} />
-          <Route path='/signin'  element={<SignIn />} />
-          <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} /> 
-          <Route path='/GroupPage/ProjectPage' element={<ProjectPage />} /> 
-          <Route path='GroupPage/ProjectPage/TaskPage' element={<TaskPage/>} />
-        </Routes>
-      </Layout>
+      <AuthProvider>
+        <Layout>
+          <Routes>
+            <Route path='*' element={<PageNotFound />} />
+            <Route path='/' element={<LoginPage />} />
+            <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
+            <Route path='/Modules/Projects' element={<ProtectedRoute><ModulesProjects/></ProtectedRoute>} />
+            <Route path='/Modules/Assign' element={<ProtectedRoute><AssignUserToModulePage/></ProtectedRoute>} />
+            <Route path='/Modules/Projects/Groups' element={<ProtectedRoute><ModulesProjectsGroups/></ProtectedRoute>} />
+            <Route path='/signin'  element={<SignIn />} />
+            <Route path='/GroupPage/AddTaskPage' element={<ProtectedRoute><AddTasksPage/></ProtectedRoute>} /> 
+            <Route path='/GroupPage/ProjectPage' element={<ProtectedRoute><ProjectPage/></ProtectedRoute>} /> 
+            <Route path='GroupPage/ProjectPage/TaskPage' element={<ProtectedRoute><TaskPage/></ProtectedRoute>} />
+            
+          </Routes>
+        </Layout>
+      </AuthProvider>
     </BrowserRouter>
+ 
+
+
   );
 }
 

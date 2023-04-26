@@ -33,7 +33,7 @@ function Accordian(props) {
           : groups.map((group, i) => (
             <div className="item">
               <div className="title" onClick={() => toggle(i)}>
-                <h2>{group.GroupName+" GroupID: "+group.GroupID}</h2>
+                <h2>{group.GroupName}</h2>
                 <span>{selected == i ? '-' : '+'}</span>
               </div>
               <div className={selected == i ? 'content show' : 'content'}>
@@ -41,14 +41,8 @@ function Accordian(props) {
                 <AltATUList
                 currentGroupID={group.GroupID}
                 ModuleID = {props.ModuleID}
-                // closeModal = {props.closeModal}
-                // openModal={props.openModal}
                 ModuleMembers = {props.ModuleMembers}
-                // showModal={props.showModal}
-                /*
-                fetchCurrentGroup={props.fetchCurrentGroup}
-                onAssignUsers={props.onAssignUsers}
-                getCurrentGroupmembers={props.getCurrentGroupmembers}*/
+                
                 />
                 
                 

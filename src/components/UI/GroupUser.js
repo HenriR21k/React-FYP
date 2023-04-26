@@ -72,7 +72,7 @@ function GroupUser({ user, taskID, loadUsers, isAssigned, AssignedUserList, setU
 
   return (
     <div className='field'>
-      {user.firstName} {user.lastName} isAssigned={`${isAssigned}`}
+      {user.firstName} {user.lastName}
       {/* {isAssigned === null 
         ? <Button title="Assign Task" onClick={handleAssignClick}/>
         : <Button title="UnAssign Task" onClick={handleUnassignClick}/>

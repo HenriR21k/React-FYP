@@ -12,9 +12,9 @@ export default function TaskForm(props) {
 
   const [task, setTask] = useState(null);
   const [showTaskStatusField, setShowTaskStatusField] = useState(false);
-  //const endpoint = `groups/${accessedGroupID}/tasks`
-  //const [tasks, , loadingMessage] = useLoad(endpoint);
-  //Methods
+  const [TaskTitleError, setTaskTitleError] = useState(null);
+  const [TaskDescriptionError, setTaskDescriptionError] = useState(null);
+ 
 
   const handleDefaultValue = (taskObjectValue) => {
 
@@ -47,9 +47,27 @@ export default function TaskForm(props) {
 
   useEffect(() => {setTask(props.task)}, []);
 
+  const handleTaskTitleError = (task) => {
+    
+    task.TaskTitle.length === null
+    ? setTaskTitleError("Do not leave field blank")
+    : setTaskDescriptionError(null);
+    
+  }
+
+  const handleTaskDescriptionError = (task) => {
+
+    task.TaskDescription.length === null
+    ? setTaskDescriptionError("Do not leave field blank")
+    : setTaskDescriptionError(null);
+
+  }
+
   const handleChange = (event) => {
     const updatedTask = {...task, [event.target.name]: event.target.value};
     setTask(updatedTask);
+    event.target.name === "TaskTitle" && handleTaskTitleError(updatedTask);
+    event.target.name === "TaskDescription" && handleTaskDescriptionError(updatedTask);
   };
 
   
@@ -60,14 +78,36 @@ export default function TaskForm(props) {
     {
       task['GroupID'] = props.groupID;
       props.onPut(task);
-      navigate('/');
+      
     }
     else {
     task['GroupID'] = props.groupID;
     task['TaskStatus'] = "Outstanding";
     console.log(task);
     props.onPost(task);
-    navigate('/');
+    
+    }
+  }
+
+  const handleSub = async (event) => {
+    event.preventDefault()
+
+    if (props.task.TaskID != null)
+    {
+      task['GroupID'] = props.groupID;
+      props.onPut(task);
+    }
+    else {
+      if ("TaskTitle" in task && "TaskDescription" in task && "TaskSetDate" in task && "TaskDeadline" in task) {
+        task['GroupID'] = props.groupID;
+        task['TaskStatus'] = "Outstanding";
+        console.log(task);
+        {(TaskTitleError === null && TaskDescriptionError === null)
+          && props.onPost(task)};
+      }
+      else {
+       alert("Please do not leave the fields blank") 
+      }
     }
   }
 
@@ -79,10 +119,10 @@ export default function TaskForm(props) {
             <Form label = "Task Form: ">
                 <FormFields>
                     <Field>
-                      <FormInput name = "TaskTitle" placeholder = "Enter task title" label = "Task Title" defaultValue = {handleDefaultValue("TaskTitle")} onChange={handleChange}/>
+                      <FormInput name = "TaskTitle" placeholder = "Enter task title" label = "Task Title" defaultValue = {handleDefaultValue("TaskTitle")} onChange={handleChange} error={TaskTitleError}/>
                     </Field>
                     <Field>
-                      <FormTextArea name = "TaskDescription" placeholder = "Enter task description (max 300 char)..." label = "Task Description" defaultValue = {handleDefaultValue("TaskDescription")} onChange={handleChange}/>
+                      <FormTextArea name = "TaskDescription" placeholder = "Enter task description (max 300 char)..." label = "Task Description" defaultValue = {handleDefaultValue("TaskDescription")} onChange={handleChange} error={TaskDescriptionError}/>
                     </Field>
                     {
                       props.task.TaskID != null &&
@@ -104,7 +144,7 @@ export default function TaskForm(props) {
                   img = ""
                   alt = ""
                   title = "Submit"
-                  onClick = {handleSubmit}
+                  onClick = {handleSub}
                   type = "Button"
                   ></Button>
                 </FormFields>

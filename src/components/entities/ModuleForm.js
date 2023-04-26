@@ -12,9 +12,10 @@ export default function ModuleForm(props) {
 
   const [module, setModule] = useState(null);
   const [showModuleStatusField, setShowModuleStatusField] = useState(false);
-  //const endpoint = `groups/${accessedGroupID}/tasks`
-  //const [tasks, , loadingMessage] = useLoad(endpoint);
-  //Methods
+  const [moduleNameError, setModuleNameError] = useState(null);
+  const [moduleDescriptionError, setModuleDescriptionError] = useState(null);
+  const [moduleCodeError, setModuleCodeError] = useState(null);
+
 
   const handleDefaultValue = (ModuleObjectValue) => {
 
@@ -51,9 +52,37 @@ export default function ModuleForm(props) {
 
   useEffect(() => {setModule(props.module)}, []);
 
+  const handleModuleNameError = (module) => {
+    
+    module.ModuleName.length === null
+    ? setModuleNameError("Error: Field cannot be blank")
+    : setModuleNameError(null);
+    
+  }
+
+  const handleModuleDescriptionError = (module) => {
+    
+    module.ModuleDescription.length === null
+    ? setModuleDescriptionError("Error: Field cannot be blank")
+    : setModuleDescriptionError(null);
+    
+  }
+
+  const handleModuleCodeError = (module) => {
+
+    module.ModuleCode.length === null
+    ? setModuleCodeError("Error: Field cannot be blank")
+    : setModuleCodeError(null);
+
+  }
+
   const handleChange = (event) => {
     const updatedModule = {...module, [event.target.name]: event.target.value};
     setModule(updatedModule);
+    event.target.name === "ModuleName" && handleModuleNameError(updatedModule);
+    event.target.name === "ModuleDescription" && handleModuleDescriptionError(updatedModule);
+    event.target.name === "ModuleCode" && handleModuleCodeError(updatedModule);
+    
   };
 
   
@@ -66,10 +95,16 @@ export default function ModuleForm(props) {
       props.onCancel();
     }
     else {
-
-    props.onPost(module);
-    console.log(module);
-    props.onCancel();
+      if ("ModuleName" in module && "ModuleDescription" in module && "ModuleLevel" in module && "ModuleCode" in module && "ModuleStartDate" in module && "ModuleEndDate" in module) {
+        {(moduleNameError === null && moduleDescriptionError === null && moduleCodeError === null)
+          && props.onPost(module);
+          console.log(module);
+          props.onCancel()};
+      }
+      else {
+        alert("Please enter all fields")
+      }
+    
     }
   }
 
@@ -81,10 +116,10 @@ export default function ModuleForm(props) {
             <Form label = "Module Form: ">
                 <FormFields>
                     <Field>
-                      <FormInput name = "ModuleName" placeholder = "Enter Module title" label = "Module Name" defaultValue = {handleDefaultValue("ModuleName")} onChange={handleChange}/>
+                      <FormInput name = "ModuleName" placeholder = "Enter Module title" label = "Module Name" defaultValue = {handleDefaultValue("ModuleName")} onChange={handleChange} error={moduleNameError}/>
                     </Field>
                     <Field>
-                      <FormTextArea name = "ModuleDescription" placeholder = "Enter Module description (max 300 char)..." label = "Module Description" defaultValue = {handleDefaultValue("ModuleDescription")} onChange={handleChange}/>
+                      <FormTextArea name = "ModuleDescription" placeholder = "Enter Module description (max 300 char)..." label = "Module Description" defaultValue = {handleDefaultValue("ModuleDescription")} onChange={handleChange} error={moduleDescriptionError}/>
                     </Field>
               
                       <Field>
@@ -99,7 +134,7 @@ export default function ModuleForm(props) {
                         </FormSelect>
                       </Field>
                     <Field>
-                      <FormInput name = "ModuleCode" placeholder = "Enter Module code" label = "Module Code" defaultValue = {handleDefaultValue("ModuleCode")} onChange={handleChange}/>
+                      <FormInput name = "ModuleCode" placeholder = "Enter Module code" label = "Module Code" defaultValue = {handleDefaultValue("ModuleCode")} onChange={handleChange} error={moduleCodeError}/>
                     </Field>  
                     <Field>
                       <FormInput name = "ModuleStartDate" type = "datetime-local" placeholder = "YYYY/MM/DDT00:00:00Z" label = "Module Start Date" defaultValue = {handleDefaultValue("ModuleStartDate")} onChange={handleChange}/>

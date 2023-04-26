@@ -1,8 +1,13 @@
 import '../UI/Accordian.css'
 import { useState } from 'react';
 import Button from '../UI/Button';
+import { useNavigate } from 'react-router-dom';
+
 
 function ReAccordion({ data, headers, headerField, fieldOrder, handlers }) {
+
+  const navigate = useNavigate();
+
   const [selected, setSelected] = useState(null);
 
   const toggle = (i) => {
@@ -48,6 +53,17 @@ function ReAccordion({ data, headers, headerField, fieldOrder, handlers }) {
     console.log(item)
   };
 
+  const handleOpenAssign = (item) => {
+
+    navigate("../Modules/Assign", {
+      state: {id: item.ModuleID}
+    })
+
+  }
+
+  //if header to name === ModuleName, display button
+  //when button is clicked take user to AssignUserPage
+
   return (
     <div className='wrapper'>
       <div className='accordion'>
@@ -62,6 +78,10 @@ function ReAccordion({ data, headers, headerField, fieldOrder, handlers }) {
               {renderFields(item)}
               <Button title='Edit' onClick={() => handleEdit(item)} />
               <Button title='Navigate' onClick={() => handleGetItem(item)} />
+              {headerField==="ModuleName" ? <Button title='Assign' onClick={() => handleOpenAssign(item)} /> : null}
+              
+              
+
             </div>
             
           </div>

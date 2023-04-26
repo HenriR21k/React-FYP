@@ -45,7 +45,7 @@ function ModuleUser({ user, currentGroupID, loadUsers, isAssigned}) {
 
   return (
     <div className='field'>
-      {user.firstName} {user.lastName} isAssigned={`${isAssigned}`}
+      {user.firstName} {user.lastName}
 
       {
         !isAssigned 

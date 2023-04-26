@@ -32,14 +32,19 @@ export function PostList(props) {
             PostDescription: PostDescription,
             PostDate: new Date().toISOString()
         }
-        handleFeedbackPost(posts)
-        setPostDescription('');
+
+        if (posts.PostDescription === null || posts.PostDescription === '') {
+            alert("Please do not leave post field blank")
+        }
+        else {
+            handleFeedbackPost(posts)
+            setPostDescription('');
+        }
+        
 
         }
       
 
-    
-    //props.loadPost(endpoint) 
    
     return (
         

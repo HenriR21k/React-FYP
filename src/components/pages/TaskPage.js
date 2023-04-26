@@ -23,9 +23,9 @@ function TaskPage() {
 
   //State
   const [task, , loadingMessage] = useLoad(endpoint)
-  const [groupUsers, setGroupUsers, loadingMessage4, loadGroupUsers] = useLoad(endpoint4)
+  const [groupUsers, setGroupUsers, loadingMessage4, loadGroupUsers] = useLoad(endpoint4) //users in the group
   const [posts, setPosts ,loadingMessage2, loadPosts] = useLoad(endpoint2);
-  const [users, setUsers , loadingMessage3, loadUsers] = useLoad(endpoint3);
+  const [users, setUsers , loadingMessage3, loadUsers] = useLoad(endpoint3); //users assigned to a task
 
   useEffect(() => { loadUsers(endpoint3) }, []);
 
@@ -47,17 +47,7 @@ function TaskPage() {
     <>
     <div className="border">
       <div className="grid-container">
-        
-        <div className="Graeme">
-        {
-          !users
-            ? <p>No users assigned to task</p>
-            : users.length === 0
-              ? <p>No users assigned to this task</p>
-              : users.map(user => (<p>{user.firstName} Array Length: {users.length}</p>))
-
-        }
-        </div>
+  
 
         <div className="TaskDesc">
         {

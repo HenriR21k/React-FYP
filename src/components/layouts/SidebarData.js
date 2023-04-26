@@ -3,12 +3,11 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 
 
-
 export const SidebarData = [
   
   {
     title: "My Teams",
-    path: "/",
+    path: "/Home",
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
   },
@@ -26,8 +25,8 @@ export const SidebarData = [
   },
 
   {
-    title: "Sign in",
-    path: "/signin",
+    title: "Sign out",
+    path: "/",
     icon: <IoIcons.IoIosLogOut />,
     cName: "nav-textLog",
   },

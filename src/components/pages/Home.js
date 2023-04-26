@@ -8,11 +8,17 @@ import Table from "../entities/Table.js";
 import Accordian from "../entities/Accordian.js";
 import StudentHome from "./StudentHome.js";
 import LecturerHome from "./LecturerHome.js";
+import { useLocation } from 'react-router-dom';
+import { useAuth } from '../auth/useAuth.js';
 
 function Home() {
   // Initialisation ------------------------------
-  const loggedInUserID = 42; //OR 51 for lecturer, 42 is a Student
-  const endpoint = `users/${loggedInUserID}/usertype`
+  const { state } = useLocation(); // 
+  
+  const { loggedinUser } = useAuth();
+
+  //const loggedInUserID = state.id; //OR 51 for lecturer, 42 is a Student
+  const endpoint = `users/${loggedinUser}/usertype`
   const [usertype, , loadingMessage2] = useLoad(endpoint)
 
   let variant = ""
@@ -30,7 +36,7 @@ function Home() {
       return (
 
         <StudentHome
-        userID = {loggedInUserID}
+        userID = {loggedinUser}
         />
       )
      case 'Lecturer':

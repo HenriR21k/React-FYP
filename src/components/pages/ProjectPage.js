@@ -19,7 +19,7 @@ const ProjectPage = (props) => {
   const user = state.user
   console.log(user)
   const endpoint = `groups/${accessedGroupID}/tasks`
-  const [tasks, , loadingMessage] = useLoad(endpoint);
+  const [tasks, , loadingMessage, loadTasks] = useLoad(endpoint);
   
   const [singleTask, setSingleTask] = useState(null);
   const [showTaskForm, setShowTaskForm] = useState(false);
@@ -31,16 +31,18 @@ const ProjectPage = (props) => {
 
   useEffect(() => {setSingleTask(dummyObject)}, []);
 
+  useEffect(() => {loadTasks(endpoint)}, []);
+
   // Methods -------------------------------
 
   const handleGroupTaskPost = async (newTask) => {
     const outcome = await API.post('tasks', newTask);
-    //fetchGroupTasks(); will be passed in as a handler throug props to redisplay groupTasks.
+    loadTasks(endpoint)
   }
 
   const handleGroupTaskPut = async (newTask) => {
     const outcome = await API.put('tasks/'+newTask.TaskID, newTask)
-    
+    loadTasks(endpoint)
   }
 
   /*const fetchModules = async () => {

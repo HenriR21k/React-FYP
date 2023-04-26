@@ -5,8 +5,11 @@ import useLoad from '../api/useLoad';
 import Button from './Button';
 import { useState, useEffect } from 'react';
 import ModuleMemberList from './ModuleMemberList';
+import { useNavigate } from 'react-router-dom';
 
 export function AltATUList(props) {
+
+    const navigate = useNavigate();
 
     const endpoint = `groups/${props.currentGroupID}/users`
     const [UsersInGroup, setUsersInGroup, loadingMessage, loadUsersInGroup] = useLoad(endpoint)
@@ -21,6 +24,13 @@ export function AltATUList(props) {
        
         setShowModal(true)
 
+      };
+
+      const navigateToProjectPage = function () {
+     
+        navigate("../GroupPage/ProjectPage", {
+          state: {id: props.currentGroupID}
+        })
       };
 
  
@@ -58,6 +68,13 @@ export function AltATUList(props) {
               img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
               title = "Assign Users"
               onClick={() => handleOpenModal()}
+            />
+            <Button
+              className="editBtn"
+              title = "Access Group"
+              img="https://img.icons8.com/ios-glyphs/256/long-arrow-right.png"
+              onClick={() => navigateToProjectPage()}
+              
             />
           </CardContainer>
        
