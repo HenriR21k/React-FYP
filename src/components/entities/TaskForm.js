@@ -49,15 +49,15 @@ export default function TaskForm(props) {
 
   const handleTaskTitleError = (task) => {
     
-    task.TaskTitle.length === null
+    task.TaskTitle.length === 0
     ? setTaskTitleError("Do not leave field blank")
-    : setTaskDescriptionError(null);
+    : setTaskTitleError(null);
     
   }
 
   const handleTaskDescriptionError = (task) => {
 
-    task.TaskDescription.length === null
+    task.TaskDescription.length === 0
     ? setTaskDescriptionError("Do not leave field blank")
     : setTaskDescriptionError(null);
 
@@ -68,6 +68,7 @@ export default function TaskForm(props) {
     setTask(updatedTask);
     event.target.name === "TaskTitle" && handleTaskTitleError(updatedTask);
     event.target.name === "TaskDescription" && handleTaskDescriptionError(updatedTask);
+    console.log(TaskTitleError)
   };
 
   
@@ -101,7 +102,8 @@ export default function TaskForm(props) {
       if ("TaskTitle" in task && "TaskDescription" in task && "TaskSetDate" in task && "TaskDeadline" in task) {
         task['GroupID'] = props.groupID;
         task['TaskStatus'] = "Outstanding";
-        console.log(task);
+        
+        console.log(TaskTitleError);
         {(TaskTitleError === null && TaskDescriptionError === null)
           && props.onPost(task)};
       }

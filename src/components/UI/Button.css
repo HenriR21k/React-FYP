@@ -42,6 +42,28 @@
   color: gray
 }
 
+.add {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: none;
+  Cursor: pointer;
+  border: none;
+  align-items: center;
+  
+  color: green
+}
+
+.remove {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: none;
+  Cursor: pointer;
+  border: none;
+  align-items: center;
+  
+  color: red
+}
+
 .addTask img {
   width: 25px;
   height: 25px;
@@ -103,5 +125,24 @@
 
 .addModule {
   margin-left: 120px;
+  background: none;
+  Cursor: pointer;
+  border: none;
+  align-items: center;
+  font-size: 20px;
+  color: gray
 }
 
+.addModule img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+}
+
+.edit, .nav, .assignModule {
+margin-right: 15px;
+border: none;
+background: none;
+Cursor: pointer;
+}

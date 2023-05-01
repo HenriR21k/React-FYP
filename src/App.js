@@ -11,6 +11,7 @@ import './App.css';
 import ModulesProjectsGroups from './components/pages/ModulesProjectsGroups.js';
 import LoginPage from './components/pages/LoginPage.js';
 import AssignUserToModulePage from './components/pages/AssignUserToModulePage.js';
+import MyWorkPage from './components/pages/MyWorkPage.js';
 import { AuthProvider } from './components/auth/useAuth.js';
 import ProtectedRoute from './components/auth/ProtectedRoute.js';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='*' element={<PageNotFound />} />
             <Route path='/' element={<LoginPage />} />
             <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
+            <Route path='/MyWork' element={<ProtectedRoute><MyWorkPage/></ProtectedRoute>} />
             <Route path='/Modules/Projects' element={<ProtectedRoute><ModulesProjects/></ProtectedRoute>} />
             <Route path='/Modules/Assign' element={<ProtectedRoute><AssignUserToModulePage/></ProtectedRoute>} />
             <Route path='/Modules/Projects/Groups' element={<ProtectedRoute><ModulesProjectsGroups/></ProtectedRoute>} />

@@ -50,14 +50,14 @@ export function PostList(props) {
         
         <CardContainer className={classes.list}>
             
-                <FormTextArea name = "PostDescription" placeholder = "Enter Post (max 300 char)..." value={PostDescription} onChange={handleChange}/>
+                {/* <FormTextArea name = "PostDescription" placeholder = "Enter Post (max 300 char)..." value={PostDescription} onChange={handleChange}/>
                 <Button
                     className="addPost"
                     img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
                     title = "Submit Post"
                     onClick = {handleSubmit}
                     type = "Button"
-                />
+                /> */}
             
             {
                 props.posts.map(post => {

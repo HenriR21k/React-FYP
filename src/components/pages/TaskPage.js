@@ -7,6 +7,7 @@ import PostList from "../UI/PostList.js";
 import './TaskPage.css';
 import Button from "../UI/Button.js";
 import GroupMemberList from "../UI/GroupMemberList.js";
+import { Form, FormInput, FormSelect, FormTextArea, FormCard, FormFields, Field } from "../UI/FormComponents.js";
 
 function TaskPage() {
   // Initialisation ------------------------------
@@ -39,8 +40,42 @@ function TaskPage() {
       setShowModal(true);
   }
   
+  
 
   useEffect(() => {loadPosts(endpoint2)}, []);
+
+  const [PostDescription, setPostDescription] = useState(null);
+
+  const handleFeedbackPost = async (newPost) => {
+    const outcome = await API.post('tasks/posts', newPost);
+    loadPosts(endpoint2)
+  }
+
+  const handleChange = (event) => {
+    //  const updatedPost = {...posts, [event.target.name]: event.target.value};
+    setPostDescription(event.target.value);
+    console.log(PostDescription);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    let posts = {
+        TaskID: accessedTaskID,
+        UserID: user,
+        PostDescription: PostDescription,
+        PostDate: new Date().toISOString()
+    }
+
+    if (posts.PostDescription === null || posts.PostDescription === '') {
+        alert("Please do not leave post field blank")
+    }
+    else {
+        handleFeedbackPost(posts)
+        setPostDescription('');
+    }
+    
+
+    }
 
   // View ----------------------------------------
   return (
@@ -98,18 +133,29 @@ function TaskPage() {
           }
 
         <div className="PostsItem">
-          <h1>Feedback</h1>
+          <h1>Posts</h1>
+          <FormTextArea name = "PostDescription" placeholder = "Enter Post (max 300 char)..." value={PostDescription} onChange={handleChange}/>
+                <Button
+                    className="addPost"
+                    img="https://img.icons8.com/material-outlined/48/plus-math--v1.png"
+                    title = "Submit Post"
+                    type = "Button"
+                    onClick={handleSubmit}
+                />
           {
           !posts
-            ? <p>{loadingMessage}</p>
+            ? <p></p>
             : posts.length === 0
               ? <p>You do not have any posts.</p>
-              : <PostList
-                posts={posts}
-                loadPosts={loadPosts}
-                TaskID={accessedTaskID}
-                user={user}
-              />
+              :   <PostList
+                    posts={posts}
+                    loadPosts={loadPosts}
+                    TaskID={accessedTaskID}
+                    user={user}
+                    
+                  />
+                
+              
           }
         </div>
       </div>

@@ -20,6 +20,7 @@ export function StudentList(props) {
                     key={student.UserID} 
                     user = {student} 
                     loadMembers = {props.loadMembers}
+                    accessedModuleID = {props.accessedModuleID}
                     isAssigned={ 
                       props.members
                         ? props.members.find(assignedUser => assignedUser.UserID === student.UserID) 

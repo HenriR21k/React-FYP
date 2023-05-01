@@ -64,7 +64,7 @@ export default function ProjectForm(props) {
                       <FormInput name = "projectName" placeholder = "Enter Project title" label = "Project Name" defaultValue = {handleDefaultValue("projectName")} onChange={handleChange}/>
                     </Field>
                     <Field>
-                      <FormTextArea name = "projectDescription" placeholder = "Enter Project description (max 300 char)..." label = "project Description" defaultValue = {handleDefaultValue("projectDescription")} onChange={handleChange}/>
+                      <FormTextArea name = "projectDescription" placeholder = "Enter Project description (max 300 char)..." label = "Project Description" defaultValue = {handleDefaultValue("projectDescription")} onChange={handleChange}/>
                     </Field>
                     <Field>
                       <FormInput name = "projectStartDate" type = "datetime-local" placeholder = "YYYY/MM/DDT00:00:00Z" label = "Project Start Date" defaultValue = {handleDefaultValue("projectStartDate")} onChange={handleChange}/>

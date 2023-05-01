@@ -76,9 +76,9 @@ function ReAccordion({ data, headers, headerField, fieldOrder, handlers }) {
             </div>
             <div className={selected === i ? 'content show' : 'content'}>
               {renderFields(item)}
-              <Button title='Edit' onClick={() => handleEdit(item)} />
-              <Button title='Navigate' onClick={() => handleGetItem(item)} />
-              {headerField==="ModuleName" ? <Button title='Assign' onClick={() => handleOpenAssign(item)} /> : null}
+              <Button className="edit" title='Edit' onClick={() => handleEdit(item)} />
+              <Button className="nav" title='Navigate' onClick={() => handleGetItem(item)} />
+              {headerField==="ModuleName" ? <Button className="assignModule" title='Assign' onClick={() => handleOpenAssign(item)} /> : null}
               
               
 

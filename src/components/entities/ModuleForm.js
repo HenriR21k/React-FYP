@@ -54,7 +54,7 @@ export default function ModuleForm(props) {
 
   const handleModuleNameError = (module) => {
     
-    module.ModuleName.length === null
+    module.ModuleName.length === 0
     ? setModuleNameError("Error: Field cannot be blank")
     : setModuleNameError(null);
     
@@ -62,7 +62,7 @@ export default function ModuleForm(props) {
 
   const handleModuleDescriptionError = (module) => {
     
-    module.ModuleDescription.length === null
+    module.ModuleDescription.length === 0
     ? setModuleDescriptionError("Error: Field cannot be blank")
     : setModuleDescriptionError(null);
     
@@ -70,7 +70,7 @@ export default function ModuleForm(props) {
 
   const handleModuleCodeError = (module) => {
 
-    module.ModuleCode.length === null
+    module.ModuleCode.length === 0
     ? setModuleCodeError("Error: Field cannot be blank")
     : setModuleCodeError(null);
 

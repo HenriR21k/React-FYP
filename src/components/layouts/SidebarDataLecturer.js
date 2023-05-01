@@ -3,18 +3,12 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 
 
-export const SidebarData = [
+export const SidebarDataLecturer = [
   
   {
-    title: "My Teams",
+    title: "Modules",
     path: "/Home",
     icon: <AiIcons.AiFillHome />,
-    cName: "nav-text",
-  },
-  {
-    title: "My Work",
-    path: "/MyWork",
-    icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
   

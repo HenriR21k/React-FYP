@@ -34,6 +34,7 @@ function AssignUserToModulePage() {
           users = {users}
           members = {members}
           loadMembers = {loadMembers}
+          accessedModuleID = {accessedModuleID}
           />
       
       
