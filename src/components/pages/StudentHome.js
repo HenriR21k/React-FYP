@@ -20,16 +20,17 @@ function StudentHome(props) {
     return (
       <>
         <div className="Home">Your Teams</div>
-        {
-          <Table
-            objects={groups}
-            idKey='GroupID'
-            fieldOrder={['GroupName']}
-            headers={["Teams"]}
-            variant="homepage"
-            user={userID}
-          />
-      }
+        
+           
+             <Table
+                objects={groups}
+                idKey='groupID'
+                fieldOrder={['groupName']}
+                headers={["Teams"]}
+                variant="homepage"
+                user={userID}
+              />    
+          
   
       </>
     )

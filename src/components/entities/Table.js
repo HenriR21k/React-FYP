@@ -19,6 +19,12 @@ function Table({objects, idKey, fieldOrder, headers, handlers, variant, user}) {
 
     const ListOfCells = (rowObj) => fieldOrder.map((key, index) => {
 
+      console.log("key: "+key)
+      let test = JSON.stringify(rowObj)
+      console.log("TeamTableValue: "+test["groupName"])
+      
+    
+
       const navigateToTaskPage = function () {
         navigate("../GroupPage/ProjectPage/TaskPage", {
           state: rowObj[idKey]
@@ -61,7 +67,7 @@ function Table({objects, idKey, fieldOrder, headers, handlers, variant, user}) {
   // View ----------------------------------------
   return (
     !objects
-      ? <p>No Data</p>
+      ? <p>No Data on Team Table</p>
       : <table>
           <thead>
               <tr>

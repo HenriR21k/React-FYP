@@ -20,7 +20,7 @@ function TeamTable({objects, idKey, fieldOrder, headers, handlers, variant}) {
 
   const ListOfCells = (rowObj) => fieldOrder.map((key, index) => {
 
-      console.log(rowObj[key]);
+      console.log("Team Table"+rowObj[key]);
       return (   
       <td key={index}> { rowObj[key] } </td>
       )
@@ -29,7 +29,7 @@ function TeamTable({objects, idKey, fieldOrder, headers, handlers, variant}) {
   // View ----------------------------------------
   return (
     !objects
-      ? <p>No Data</p>
+      ? <p>No Data on Team Table</p>
       :<table>
         <thead>
           <tr>
